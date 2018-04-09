@@ -1,0 +1,53 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-env-vars
+  labels:
+    name: mysql-env-vars
+data:
+  MYSQL_ROOT_PASSWORD: smil3yfc
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deploy-for-svc
+  labels:
+    app: mysql-deploy-for-svc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mysql-deploy-pods-for-svc
+  template:
+    metadata:
+      labels:
+        app: mysql-deploy-pods-for-svc
+    spec:
+      containers:
+        - name: mysql-deploy-containers-for-svc
+          image: mysql:5.6
+          envFrom:
+            - configMapRef:
+                name: mysql-env-vars
+          ports:
+            - containerPort: 3306
+  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: default
+  labels:
+    app: mysql-svc
+spec:
+  type: NodePort
+  ports:
+    - nodePort: 30001
+      port: 3000
+      targetPort: 3306
+      protocol: TCP
+  selector:
+    app: mysql-deploy-pods-for-svc

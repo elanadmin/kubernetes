@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kube-dash-test
+  labels:
+    ingress: kube-dash-test
+  annotations:
+    ingress.kubernetes.io/rewite-target: /
+spec:
+  rules:
+    - host: kube-external.elan.elantecs.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: kube-dash
+              servicePort: 443
+  tls:
+    - hosts:
+        - kube-external.elan.elantecs.com
+      secretName: tls-certifcate 

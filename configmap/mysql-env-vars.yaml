@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-cmap
+data:
+  MYSQL_ROOT_USER: root
+  MYSQL_ROOT_PASSWORD: smil3yfc

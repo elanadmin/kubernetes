@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: busyjob
+  labels:
+    name: busyjob
+spec:
+  backoffLimit: 5
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: busyboxjob
+          image: busybox
+          command: [ "sleep", "10" ]

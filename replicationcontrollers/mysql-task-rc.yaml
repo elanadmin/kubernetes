@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mysql-task-rc
+  labels:
+    app: mysql-task-rc
+spec:
+  replicas: 2
+  selector:
+    app: mysql-task-pods
+  template:
+    metadata:
+      labels:
+        app: mysql-task-pods
+    spec:
+      containers:
+        - name: mysql-task-containers
+          image: mysql
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: smil3yfc

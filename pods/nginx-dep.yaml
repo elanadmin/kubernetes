@@ -1,0 +1,46 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+  labels:
+    secret: app-secret
+type: opaque
+data:
+  password: Ym9iCg==
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-dep
+  template:
+    metadata: 
+      labels:
+        app: nginx-dep
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.13-alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: app-vol
+              mountPath: /var/tmp/app-vol
+ 
+            - name: app-secret
+              mountPath: /etc/app-secret
+
+      volumes:
+        - name: app-vol
+          emptyDir: {}
+        - name: app-secret
+          secret:
+            secretName: app-secret

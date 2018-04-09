@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+spec:
+  containers:
+    - name: busybox
+      image: busybox
+      command: [ "/bin/sh", "-c", "if [ -f /workdir/file123 ];then
+                  sleep 1000;else exit 1;fi" ]
+      volumeMounts:
+        - name: test
+          mountPath: /workdir
+
+  initContainers:
+   - name: nginx
+     image: nginx
+     command: [ "/bin/sh", "-c", "touch /workdir/file123" ]
+     volumeMounts:
+       - name: test
+         mountPath: /workdir
+
+  restartPolicy: Always
+  volumes:
+    - name: test
+      hostPath: 
+        path: "/var/tmp/test"
+        type: Directory

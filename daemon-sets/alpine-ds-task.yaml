@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: alpine-ds-task
+  labels:
+    app: "alpine-ds-task"
+spec:
+  selector:
+    matchLabels:
+      daemon: "alpine-ds-pod"
+  template:
+    metadata:
+      labels:
+        daemon: "alpine-ds-pod"
+    spec:
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      containers:
+      - name: alpine-ds-container
+        image: nginx

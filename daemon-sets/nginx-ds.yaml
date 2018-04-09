@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nginx-ds
+  labels:
+    app: nginx-ds
+spec:
+  selector:
+    matchLabels:
+      app: nginx-ds-pods
+  template:
+    metadata:
+      labels:
+        app: nginx-ds-pods
+    spec:
+      containers:
+        - name: nginx-ds-pods
+          image: nginx
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule

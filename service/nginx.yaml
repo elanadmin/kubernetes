@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: 2018-03-26T10:09:19Z
+  labels:
+    name: lnginx-dep
+  name: nginx-dep
+  namespace: default
+  resourceVersion: "10391"
+  selfLink: /api/v1/namespaces/default/services/nginx-dep
+  uid: bf54beb3-30dd-11e8-ad9b-0a7422225838
+spec:
+  clusterIP: 10.98.224.41
+  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 30000
+    port: 8000
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: nginx
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine
+  labels:
+    app: alpine
+spec:
+  containers:
+    - name: alpine
+      image: alpine
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 80
+      command: ["/bin/sh"]
+      args: ["-c", "sleep 30 &> /dev/termiantionmessages.log"]
+  restartPolicy: Never

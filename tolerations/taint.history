@@ -1,0 +1,49 @@
+    7  kubectl taint node kube-worker-0 fastnic=true:NoSchedule
+   24  kubectl taint kube-worker-2 fastnic=false:NoExecute
+   25  kubectl taint node kube-worker-2 fastnic=false:NoExecute
+   34  kubectl taint node kube-worker-1 fastnic=true:NoExecute
+   52  kubectl taint node kube-worker-0 fastnic=false:NoExecute
+   74  for i in $(seq 0 2);do kubectl describe node kube-worker-$i|grep -i taint;done
+   75  kubectl taint node kube-worker-1 fastnic:Noexecute-
+   76  kubectl taint node kube-worker-1 fastnic:NoExecute-
+   78  kubectl taint node kube-worker-1 fastnic=true:NoSchedule
+   84  kubectl taint node kube-worker-1 fastnic=true:NoExecute
+   86* kubectl taint node kube-worker-1 fastnic=true:NoSchedule
+   99  kubectl taint node kube-worker-1 fastnic:NoExecute-
+  102  kubectl taint node kube-worker-1 fastnic=true:NoExecute
+  104  kubectl taint node kube-master-1 fastnic=true:NoSchedule-
+  105  kubectl taint node kube-worker-1 fastnic=true:NoSchedule-
+  106  kubectl taint node kube-worker-1 fastnic:NoSchedule-
+  110  kubectl taint node kube-worker-1 ssd=true:NoSchedule
+   82  kubectl delete pods default-http-backend-66fbbd8844-dkdq4
+  114  kubectl delete pod nginx-tol-pod
+  126  kubectl delete pod nginx-tol-pod
+  134  history | grep delete
+  135  history | grep delete >> taint.history 
+   15  kubectl apply -f pod-tol.yml 
+   17  kubectl apply -f pod-tol.yml 
+   19  kubectl apply -f pod-tol.yml 
+   32  kubectl apply -f pod-tol.yml 
+   40  kubectl apply -f pod-tol.yml 
+   60  kubectl apply -f pod-tol.yml 
+   71  kubectl apply -f pod-tol.yml 
+   73  kubectl apply -f pod-tol.yml 
+   90  kubectl apply -f pod-tol.yml 
+   95  kubectl apply -f pod-tol.yml 
+  115  kubectl apply -f pod-tol.yml 
+  127  kubectl apply -f pod-tol.yml 
+
+root@kube-master-0:~/practice/tolerations# kubectl taint node kube-worker-0 fastnic:NoSchedule-
+node "kube-worker-0" untainted
+root@kube-master-0:~/practice/tolerations# kubectl taint node kube-worker-1 fastnic:NoSchedule-
+error: taint "fastnic:NoSchedule" not found
+root@kube-master-0:~/practice/tolerations# kubectl taint node kube-worker-2 fastnic:NoSchedule-
+error: taint "fastnic:NoSchedule" not found
+root@kube-master-0:~/practice/tolerations# kubectl taint node kube-worker-2 fastnic:NoExecute-
+node "kube-worker-2" untainted
+root@kube-master-0:~/practice/tolerations# kubectl taint node kube-worker-1 fastnic:NoExecute-
+node "kube-worker-1" untainted
+root@kube-master-0:~/practice/tolerations# kubectl taint node kube-worker-0 fastnic:NoExecute-
+node "kube-worker-0" untainted
+root@kube-master-0:~/practice/tolerations# kubectl taint node kube-worker-1 ssd:NoSchedule-
+node "kube-worker-1" untainted

@@ -1,0 +1,54 @@
+    2  kubect get deploy
+    3  kubectl get deploy
+    7  kubectl rollout  status deploy nginx-deploy
+    8  kubectl set image deploy nginx-deploy --image=nginx:1.8.3
+    9  kubectl set image deploy nginx-deploy nginx=nginx:1.8.3
+   10  kubectl set image deploy nginx-deploy nginx-deploy=nginx:1.8.3
+   11  kubectl rollout status deploy nginx-deploy
+   15  kubectl rollout history deploy nginx-deploy
+   16  kubectl rollout history deploy nginx-deploy --revision=2
+   17  kubectl rollout history deploy nginx-deploy --revision=1
+   18  kubectl rollout undo deploy nginx-deploy --to-revision=1
+   19  kubectl rollout status deploy nginx-deply
+   20  kubectl rollout status deploy nginx-deploy
+   21  kubectl set image deploy nginx-deploy nginx-deploy=nginx:1.8
+   22  kubectl rollout status deploy nginx-deploy
+   23  kubectl get deploy
+   24  kubectl rollout status deploy nginx-deploy
+   25  kubectl get deployment nginx-deploy
+   26  kubectl get deployment nginx-deploy -o yaml
+   27  kubectl patch deploy nginx-deploy -p '{"spec": {"replicas": 7}}'
+   28  kubectl rollout status deploy nginx-deploy
+   29  kubectl get deploy
+   30  kubectl rollout history
+   31  kubectl rollout deploy nginx-deploy history
+   32  kubectl rollout history deploy deploy-nginx
+   33  kubectl rollout history deploy nginx-deploy
+   34  kubectl rollout history deploy nginx-deploy --revision=3
+   35  kubectl rollout undo deploy nginx-deploy --to-revision=3
+   36  kubectl rollout status deploy nginx-deploy
+   43  kubectl create -f alpine.yaml 
+   44  kubectl create -f alpine.yaml --dry-run
+   46  kubectl get pods
+   47  kubectl get pods -l app=alpine
+   48  kubectl describe pod -l app=alpine
+   51  vi alpine.yaml 
+   52  kubectl stop alpine
+   55  kubectl top pod alpine
+   56  kubectl top node kube-worker-0
+   58  vi alpine.yaml 
+   59  kubectl apply -f alpine.yaml 
+   60  kubectl apply -f alpine.yaml --dry-run
+   61  kubectl delete -f alpine
+   62  kubectl delete pod alpine
+   63  kubectl apply -f alpine.yaml 
+   64  kubectl delete pod alpine
+   66  kubectl apply -f alpine.yaml 
+   70  kubectl logs alpine
+   72  kubectl describe pod alpine
+   73  kubectl get pods
+   78  kubectl apply -f alpine.yaml 
+   79  kubectl delete pod alpine
+   80  kubectl get pods
+   81  kubectl apply -f alpine.yaml 
+   82  kubectl get pods

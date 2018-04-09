@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-dep-empty
+  labels:
+    name: nginx-dep-empty
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-dep-empty-pods
+  template:
+    metadata:
+      labels:
+        app: nginx-dep-empty-pods
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: empty-vol
+              mountPath: /var/tmp/files
+      volumes:
+        - name: empty-vol
+          emptyDir: {}
+      nodeSelector:
+        storage: emptydir

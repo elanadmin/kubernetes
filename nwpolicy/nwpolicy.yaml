@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: counter-nwp
+  labels:
+    app: counter-nwp
+spec:
+  podSelector:
+    matchLabels:
+      test: nwp
+  policyTypes:
+    - Egress

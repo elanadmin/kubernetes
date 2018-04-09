@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-task
+  labels:
+    app: nginx-task
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-task-pods
+  template:
+    metadata:
+      labels:
+        app: nginx-task-pods
+    spec:
+      containers:
+        - name: nginx-task-containers
+          image: nginx:latest
+          ports:
+            - containerPort: 80

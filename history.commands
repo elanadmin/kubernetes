@@ -1,0 +1,682 @@
+    1  kubectl get pods
+    2  cd /root/practi
+    3  ls
+    4  bash s3_sync_practice.sh 
+    5  cd practice/pods
+    6  ls
+    7  vi busybox.yaml 
+    8  kubectl apply -f busybox.yaml --dry-run
+    9  vi busybox.yaml 
+   10  kubectl apply -f busybox.yaml --dry-run
+   11  vi busybox.yaml 
+   12  kubectl apply -f busybox.yaml --dry-run
+   13  kubectl apply -f busybox.yaml 
+   14  vi busybox.yaml 
+   15  kubectl get pods -o wide
+   16  kubectl describe pods my-nginx-nginx-ingress-controller-6f65f9c96d-lhxfm
+   17  kubectl describe pods busybox
+   18  kubectl get pods
+   19  kubectl describe pods busybox
+   20  kubectl get pods
+   21  kubectl describe pods busybox
+   22  ls
+   23  vi busybox.yaml 
+   24  ls
+   25  kubectl get pods
+   26  kubectl delete -f busybox.yaml 
+   27  kubectl apply -f busybox.yaml 
+   28  kubectl get pods
+   29  kubectl get pods --watch
+   30  ls
+   31  vi busybox.yaml 
+   32  ls
+   33  vi alpine.yaml 
+   34  kubectl get pods
+   35  ls
+   36  kubectl apply -f busybox.yaml 
+   37  kubectl get pods
+   38  kubectl describe pods busybox
+   39  ls
+   40  vi busybox.yaml 
+   41  ls
+   42  kubectl get pods
+   43  ls
+   44  vi mysql.yaml 
+   45  ls
+   46  vi redis.yaml
+   47  kubectl apply -f redis.yaml --dry-run
+   48  vi redis.yaml
+   49  kubectl apply -f redis.yaml --dry-run
+   50  kubectl apply -f redis.yaml
+   51  kubectl get pods
+   52  kubectl describe pos redis-pod
+   53  kubectl describe pod redis-pod
+   54  ls
+   55  vi redis.yaml
+   56  ls
+   57  kubectl delete -f redis.yaml 
+   58  vi redis.yaml 
+   59  kubectl delete -f redis.yaml 
+   60  kubectl apply -f redis.yaml
+   61  kubectl describe pod redis-pod
+   62  ls
+   63  telnet 10.36.0.7 6379
+   64  ls
+   65  cd ../
+   66  cd deployments/
+   67  ls
+   68  cd ../pod
+   69  cd ../pods/
+   70  ls
+   71  vi pod.history 
+   72  kubectl run nginx --image=nginx:1.7.9 --replicas=2
+   73  kubectl get deploy
+   74  kubectl get deploy --watch
+   75  ls
+   76  kubectl get deploy --watch
+   77  kubectl get pods
+   78  kubectl get pods --sort-by= .metadata.name
+   79  kubectl get pods --sort-by= { .metadata.name }
+   80  kubectl get pods --sort-by=x .metadata.name
+   81  kubectl get pods --sort-by=.metadata.name
+   82  vi redis.yaml 
+   83  kubectl get pods --sort-by=.metadata.labels.app
+   84  kubectl get pods --sort-by=.metadata.labels.app=redis
+   85  kubectl get pods --sort-by=.metadata.labels.app: redis
+   86  kubectl get pods --sort-by=.metadata.labels.app.redis
+   87  kubectl get pods --sort-by=.metadata.labels.app_redis
+   88  kubectl get pods --sort-by=.metadata.creationTimeStamp
+   89  kubectl get pods --sort-by=.metadata.creationTimestamp
+   90  ls
+   91  kubectl get pods -l run=nginx
+   92  kubectl label pods -l run=nginx app=nginx
+   93  kubectl get pods -l app=nginx
+   94  ls
+   95  kubectl get deploy
+   96  kubectl get deploy nginx
+   97  kubectl get deploy nginx -o yaml > nginx-dep.yaml
+   98  vi nginx-dep.yaml 
+   99  kubectl get pods
+  100  vi nginx-dep.yaml 
+  101  kubectl set image deploy nginx --image=nginx:1.8.3 --record
+  102  kubectl set image deploy nginx nginx=nginx:1.8.3 --record
+  103  kubectl rollout status deploy nginx
+  104  kubectl rollout history deploy nginx
+  105  kubectl rollout undo deploy nginx --to-revision=1
+  106  kubectl rollout status deploy nginx
+  107  kubectl rollout history deploy nginx
+  108  kubectl set image deploy nginx nginx=nginx:1.8 --record
+  109  kubectl rollout status deploy nginx
+  110  kubectl rollout history deploy nginx
+  111  curl -s 'https://registry.hub.docker.com/v2/repositories/library/debian/tags/' | jq '."results"[]["name"]' | tr -d '"'
+  112  apt-get install jq
+  113  curl -s 'https://registry.hub.docker.com/v2/repositories/library/debian/tags/' | jq '."results"[]["name"]' | tr -d '"'
+  114  curl -s 'https://registry.hub.docker.com/v2/repositories/library/nginx/tags/' | jq '."results"[]["name"]' | tr -d '"'
+  115  ls
+  116  vi /usr/bin/docker-images-tags
+  117  bash -n /usr/bin/docker-images-tags
+  118  vi /usr/bin/docker-images-tags
+  119  bash -n /usr/bin/docker-images-tags
+  120  bash /usr/bin/docker-images-tags
+  121  vi /usr/bin/docker-images-tags
+  122  chmod 755 /usr/bin/docker-images-tags
+  123  docker-
+  124  docker-images-tags 
+  125  docker-images-tags nginx
+  126  vi /usr/bin/docker-images-tags
+  127  docker-images-tags nginx
+  128  docker-images-tags mysql
+  129  vi /usr/bin/docker-images-tags
+  130  ls
+  131  vi nginx-dep.yaml 
+  132  kubectl get deploy
+  133  kubectl delete deploy nginx
+  134  ls
+  135  vi nginx-dep.yaml 
+  136  ls
+  137  vi nginx-dep.yaml 
+  138  vi ../secrets/
+  139  vi ../secrets/certs.yml 
+  140  vi nginx-dep.yaml 
+  141  vi ../secrets/certs.yml 
+  142  vi nginx-dep.yaml 
+  143  vi ../secrets/mysql.yaml 
+  144  vi nginx-dep.yaml 
+  145  vi ../secrets/mysql.yaml 
+  146  vi nginx-dep.yaml 
+  147  ls
+  148  vi nginx-dep.yaml 
+  149  kubectl apply -f nginx-dep.yaml --record
+  150  vi nginx-dep.yaml 
+  151  kubectl apply -f nginx-dep.yaml --record
+  152  kubectl rollout history deploy nginx-dep
+  153  kubectl rollout history deploy nginx
+  154  kubectl get deploy
+  155  ls
+  156  kubectl rollout history deploy nginx -o wide
+  157  kubectl rollout history deploy nginx
+  158  ls
+  159  cd practice/pods
+  160  ls
+  161  kubectl get deploy
+  162  kubectl rollout history deploy nginx
+  163  vi nginx-dep.yaml 
+  164  docker-images-tags 
+  165  docker-images-tags nginx
+  166  vi nginx-dep.yaml 
+  167  kubectl apply -f nginx-dep.yaml 
+  168  kubectl rollout history deploy nginx
+  169  ls
+  170  kubectl get deploy
+  171  kubectl set image deploy nginx nginx=nginx:1.13.11-alpine --record
+  172  kubectl get deploy
+  173  kubectl rollout status deploy nginx
+  174  kubectl rollout history deploy nginx
+  175  kubectl get deploy
+  176  kubectl get pods
+  177  ls
+  178  kubectl exec -it nginx-5d7569fbb7-kz7q9 sh
+  179  ls
+  180  cd ../
+  181  ls
+  182  cd jobs/
+  183  ls
+  184  vi busybox.yaml 
+  185  ls
+  186  vi perl
+  187  vi perljob.yaml 
+  188  kubectl get pods
+  189  kubectl top
+  190  kubectl top node
+  191  kubectl top node kube-worker-1
+  192  kubectl top pod nginx-5d7569fbb7-kz7q9
+  193  ls
+  194  kubeadm token list
+  195  kubeadm token generate
+  196  kubeadm token create --ttl 24h 9adbe3.5c520e5486560bcf
+  197  kubeadm token list
+  198  kubeadm token create --ttl 24h 9adbe3.5c520e5486560bcf --print-join-command
+  199  kubeadm token show --ttl 24h 9adbe3.5c520e5486560bcf --print-join-command
+  200  kubeadm token list 9adbe3.5c520e5486560bcf --print-join-command
+  201  kubeadm token list
+  202  kubeadm token delete
+  203  kubeadm token delete 9adbe3.5c520e5486560bcf
+  204  kubeadm token create --ttl 24h 9adbe3.5c520e5486560bcf --print-join-command
+  205  ls
+  206  vi perl
+  207  vi perl.yaml 
+  208  ls
+  209  cd ../
+  210  ls
+  211  cd confimap/
+  212  ls
+  213  cd ../
+  214  mv confimap configmap
+  215  ls
+  216  cd configmap/
+  217  ls
+  218  vi busybox.yaml 
+  219  ls
+  220  vi mysql-vars.yaml 
+  221  vi mysql-env-vars.yaml 
+  222  ls
+  223  vi busybox.yaml 
+  224  ls
+  225  vi mysql.yaml
+  226  ls
+  227  cat mysql-env-vars.yaml
+  228  vi mysql.yaml 
+  229  ls
+  230  vi busybox.yaml 
+  231  vi mysql.yaml 
+  232  kubectl apply -f mysql.yaml 
+  233  vi mysql.yaml 
+  234  kubectl apply -f mysql.yaml 
+  235  vi mysql.yaml 
+  236  kubectl apply -f mysql.yaml 
+  237  vi mysql.yaml 
+  238  kubectl apply -f mysql.yaml 
+  239  vi ../replicationcontrollers/mysql-task-rc.yaml 
+  240  vi mysql.yaml 
+  241  kubectl apply -f mysql.yaml 
+  242  vi mysql.yaml 
+  243  vi ../replicationcontrollers/mysql-task-rc.yaml 
+  244  vi mysql.yaml 
+  245  kubectl apply -f mysql.yaml 
+  246  vi mysql.yaml 
+  247  vi ../replicationcontrollers/mysql-task-rc.yaml 
+  248  vi mysql.yaml 
+  249  kubectl apply -f mysql.yaml 
+  250  kubectl get rc
+  251  kubectl rolling-update
+  252  kubectl rolling-update -h
+  253  ls
+  254  kubectl get rc
+  255  kubectl get pods
+  256  kubectl describe pods mysql-rc-fqkwr
+  257  ls
+  258  kubectl apply -f mysql-env-vars.yaml
+  259  kubectl describe pods mysql-rc-fqkwr
+  260  kubectl delete rc mysql
+  261  kubectl delete rc mysql-rc
+  262  kubectl apply -f mysql.yaml 
+  263  kubectl get rc
+  264  ls
+  265  vi kube-dns.yaml 
+  266  ls
+  267  vi kube-dns.yaml 
+  268  ls
+  269  vi mysql
+  270  kubectl get rc
+  271  vi mysql.yaml 
+  272  kubectl rolling-update mysql-rc -f mysql.yaml 
+  273  ls
+  274  cp -rp mysql.yaml mysql-rc2.yaml
+  275  mv mysql.yaml mysql-rc.yaml
+  276  ls
+  277  kubectl rolling-update mysql-rc -f mysql-rc2.yaml 
+  278  vi mysql-rc2.yaml
+  279  kubectl rolling-update mysql-rc -f mysql-rc2.yaml 
+  280  vi mysql-rc2.yaml
+  281  kubectl rolling-update mysql-rc -f mysql-rc2.yaml 
+  282  kubectl rolling-update history
+  283  kubectl rolling-update mysql-rc2 mysql-rc3 --image:
+  284  docker-images-tags mysql
+  285  kubectl rolling-update mysql-rc2 mysql-rc3 --image=mysql:5.7.21
+  286  kubectl rolling-update
+  287  kubectl rolling-update -h
+  288  kubectl rolling-update -a
+  289  kubectl rolling-update --show-all
+  290  kubectl rolling-update mysql-rc3 mysql-rc
+  291  kubectl rolling-update mysql-rc3 mysql-rc --rollback
+  292  kubectl get rc
+  293  kubectl rolling-update mysql-rc3 mysql-rc --rollback
+  294  kubectl rolling-update mysql-rc3 --rollback
+  295  kubectl rolling-update mysql-rc3 --rollback=true
+  296  kubectl get rc
+  297  kubectl rolling-update mysql-rc3 --rollback=true
+  298  ls
+  299  cd ../
+  300  ls
+  301  cd daemon-sets/
+  302  ls
+  303  vi alpine-ds-task.yaml 
+  304  kubectl taint node-role.kubernetes.io=master:-
+  305  kubectl taint node kube-master-0 node-role.kubernetes.io=master:-
+  306  kubectl taint node kube-master-0 node-role.kubernetes.io=master:NoSchedule:-
+  307  kubectl describe node kube-master-0
+  308  kubectl taint node kube-master-0 node-role.kubernetes.io:NoSchedule:-
+  309  kubectl taint node kube-master-0 node-role.kubernetes.io=NoSchedule:-
+  310  kubectl taint node kube-master-0 node-role.kubernetes.io:NoSchedule:-
+  311  kubectl taint node kube-master-0 node-role.kubernetes.io:NoSchedule-
+  312  kubectl taint nodes kube-master-0 node-role.kubernetes.io:NoSchedule-
+  313  kubectl taint nodes kube-master-0 node-role.kubernetes.io:-
+  314  kubectl taint nodes kube-master-0 node-role.kubernetes.io/master:NoSchedule-
+  315  kubectl taint nodes kube-master-0 node-role.kubernetes.io=master:NoSchedule
+  316  kubectl describe node kube-master-0
+  317  kubectl taint nodes kube-master-0 node-role.kubernetes.io=master:NoSchedule-
+  318  kubectl taint nodes kube-master-0 node-role.kubernetes.io:NoSchedule-
+  319  kubectl taint nodes kube-master-0 node-role.kubernetes.io/master:NoSchedule-
+  320  kubectl taint nodes kube-master-0 node-role.kubernetes.io/master:NoSchedule
+  321  kubectl taint nodes kube-master-0 node-role.kubernetes.io=master:NoSchedule
+  322  ls
+  323  vi alpine-ds-task.yaml 
+  324  l
+  325  ls
+  326  vi nginx-ds.yaml 
+  327  kubectl apply -f nginx-ds.yaml 
+  328  vi nginx-ds.yaml 
+  329  kubectl get pods
+  330  vi nginx-ds.yaml 
+  331  kubectl get pods -o wide
+  332  vi nginx-ds.yaml 
+  333  kubectl describe nodes kube-master-0
+  334  ls
+  335  vi nginx-ds.yaml 
+  336  kubectl taint nodes node-role.kubernetes.io:NoSchedule-
+  337  kubectl taint nodes kube-master-0 node-role.kubernetes.io:NoSchedule-
+  338  kubectl taint nodes kube-master-0 node-role.kubernetes.io/master:NoSchedule-
+  339  kubectl taint nodes kube-master-0 node-role.kubernetes.io/master=master:NoSchedule-
+  340  kubectl taint nodes kube-master-0 node-role.kubernetes.io/master=master:NoSchedule
+  341  kubectl get pods
+  342  ls
+  343  cd ../
+  344  ls
+  345  cd ingress/
+  346  ls
+  347  cat default.yaml 
+  348  vi default.yaml 
+  349  ls
+  350  cat kubernetes-dashboard.yaml 
+  351  ls
+  352  vi kube-dash.yaml
+  353  kubectl apply -f kube-dash.yaml 
+  354  vi kube-dash.yaml
+  355  cat default.yaml 
+  356  vi kube-dash.yaml
+  357  cat default.yaml 
+  358  kubectl apply -f kube-dash.yaml 
+  359  kubectl get ing
+  360  ls
+  361  cd ../
+  362  ls
+  363  cd manual-schedule-pods/
+  364  ls
+  365  cat nginx.yaml 
+  366  ls
+  367  cd ../
+  368  ls
+  369  cd nwpolicy/
+  370  ls
+  371  cd ../
+  372  ls
+  373  cd service/
+  374  ls
+  375  cat nginx.yaml 
+  376  ls
+  377  cat mysql.yaml 
+  378  ls
+  379  kubectl apply -f mysql.yaml 
+  380  kubectl get svc mysql-svc
+  381  kubectl get svc
+  382  kubectl describe mysql
+  383  kubectl describe svc mysql
+  384  ls
+  385  kubectl get deploy
+  386  kubectl patch deploy nginx -p '{"spec": {"replicas": 4}}'
+  387  kubectl get deploy
+  388  ls
+  389  cd ../
+  390  ls
+  391  cd replica
+  392  cd replicasets/
+  393  ls
+  394  cat httpd-task-rs.yml 
+  395  cd ../
+  396  ls
+  397  cd storage/
+  398  ls
+  399  cat nginx.yaml 
+  400  ls
+  401  cd ../
+  402  ls
+  403  cd pv
+  404  ls
+  405  cat nfs-pv.yaml 
+  406  ls
+  407  vi nfs-pv5g.yaml 
+  408  ls
+  409  vi hostpath-pv.yaml
+  410  kubectl apply -f hostpath-pv.yaml 
+  411  kubectl get pv
+  412  ls
+  413  vi hostpath-pv.yaml
+  414  ls
+  415  cd ../pvc/
+  416  ls
+  417  cat nfs-pod.yaml nfs-p
+  418  cat nfs-pod.yaml
+  419  ls
+  420  cat nfs-pvc.yaml 
+  421  ls
+  422  vi hostpath-pvc.yaml
+  423  vi ../pv/hostpath-pv.yaml 
+  424  kubectl apply -f hostpath-pvc.yaml 
+  425  vi hostpath-pvc.yaml 
+  426  kubectl get pvc
+  427  vi hostpath-pvc.yaml 
+  428  vi ../pv/hostpath-pv.yaml 
+  429  vi hostpath-pvc.yaml 
+  430  kubectl apply -f hostpath-pvc.yaml 
+  431  kubectl delete pvc hostpath-pvc
+  432  kubectl apply -f hostpath-pvc.yaml 
+  433  kubectl get pvc
+  434  ls
+  435  vi hostpath-pod.yaml
+  436  kubectl apply -f hostpath-pod.yaml 
+  437  vi hostpath-pod.yaml
+  438  kubectl apply -f hostpath-pod.yaml 
+  439  vi hostpath-pod.yaml
+  440  kubectl apply -f hostpath-pod.yaml 
+  441  kubectl get pods
+  442  kubectl get pods -o wide
+  443  kubectl get pv
+  444  kubectl get pv -o wide
+  445  kubectl logs hostpath-pod
+  446  kubectl exec -it hostpath-pod sh
+  447  ls
+  448  cd ../
+  449  ls
+  450  cd nwpolicy/
+  451  ls
+  452  cat allow-mysql-ingress.yaml 
+  453  vi /etc/systemd/system/kubelet.service.d/10-kubeadm.conf 
+  454  vi ../configmap/kube-dns.yaml 
+  455  vi /etc/systemd/system/kubelet.service.d/10-kubeadm.conf 
+  456  vi ../configmap/kube-dns.yaml 
+  457  ls
+  458  cat allow-mysql-ingress.yaml 
+  459  ls
+  460  cat deny-all-ingress.yaml 
+  461  cat allow-all-ingress.yaml 
+  462  cat allow-mysql-ingress.yaml 
+  463  ls
+  464  cat deny-all-ingress.yaml 
+  465  cat deny-all-engress.yaml 
+  466  cat deny-all-egress.yaml 
+  467  cat allow-mysql-ingress.yaml 
+  468  ls
+  469  vi ../pvc/hostpath-pvc.yaml 
+  470  ls
+  471  kubeadm upgrade plan
+  472  kubeadm upgrade apply v1.9.6
+  473  apt-get install kubeadm=1.9.6-00
+  474  kubeadm upgrade apply v1.9.6
+  475  kubectl get nodes
+  476  kubectl drain kube-master-0 --ignore-daemonsets
+  477  kubectl get nodes
+  478  kubeadm upgrade apply v1.9.6
+  479  kubectl uncordon kube-master-0
+  480  kubectl get nodes
+  481  ls
+  482  kubectl plan upgrade
+  483  kubectl upgrade plan
+  484  kubeadm upgrade plan
+  485  apt-get install kubelet=1.9.6-00
+  486  ls
+  487  vi ../pods/nginx-dep.yaml
+  488  ls
+  489  vi ../pods/redis.yaml 
+  490  vi ../pvc/hostpath-pod.yaml 
+  491  ls
+  492  kubectl get pods -n kube-system
+  493  kubectl exec -it etcd-kube-master-0 sh
+  494  kubectl exec -it etcd-kube-master-0 -n kube-system sh
+  495  cd /var/lib/etcd/member/
+  496  cd ../
+  497  ls
+  498  rm snapshot.db 
+  499  ls
+  500  lsof -i :6379
+  501  lsof -i :2379
+  502  kubectl get deploy
+  503  kubectl run busybox --image=busybox --command sleep 3600
+  504  kubectl get pods
+  505  kubectl get svc
+  506  kubectl exec -it busybox-855686df5d-r45cf nslookup mysql
+  507  kubectl exec -it busybox-855686df5d-r45cf nslookup kubernetes
+  508  kubectl exec -it busybox-855686df5d-r45cf nslookup nginx-5d7569fbb7-ggvg8
+  509  kubectl exec -it busybox-855686df5d-r45cf nslookup nginx-5d7569fbb7-ggvg8.pod
+  510  kubectl exec -it busybox-855686df5d-r45cf nslookup nginx-5d7569fbb7-ggvg8.default.pod
+  511  kubectl exec -it busybox-855686df5d-r45cf nslookup nginx-5d7569fbb7-ggvg8.default.pod.cluster.local
+  512  kubectl exec -it busybox-855686df5d-r45cf nslookup busybox
+  513  kubectl delete deploy busybox
+  514  ls
+  515  cd /
+  516  ;s
+  517  ls
+  518  cd /var/tmp/files/
+  519  ls
+  520  cd practice/
+  521  ls
+  522  cd calico/
+  523  ls
+  524  cat install-calicoctl.sh 
+  525  cd /
+  526  kubectl get pods
+  527  kubectl exec -it busybox sh
+  528  kubectl get svc
+  529  kubectl get pods
+  530  kubectl describe pod redis-pod
+  531  kubectl exec -it busybox sh
+  532  ping 10.96.0.10
+  533  kubectl exec -it busybox sh
+  534  ls
+  535  kubectl get pods -l run=nginx -o jsonpath="{.items[0].metadata.name}"
+  536  kubectl get pods
+  537  kubectl get pods -l run=nginx -o jsonpath="{.items[0].metadata.name}"
+  538  kubectl get pods -l run=nginx -o jsonpath="{.items[].metadata.name}"
+  539  kubectl get pods -l run=nginx -o jsonpath="{.items[0].metadata.name}"
+  540  kubectl get pods -l run=nginx -o json
+  541  kubectl get pods
+  542  kubectl get pods -l run=nginx
+  543  kubectl label pods nginx-5d7569fbb7-ggvg8 run=nginx
+  544  kubectl get pods -l run=nginx
+  545  kubectl get pods -l run=nginx -o json
+  546  kubectl get pods -l run=nginx -o=jsonpath='{.items[0]}'
+  547  kubectl get pods -l run=nginx -o=jsonpath='{.items}'
+  548  kubectl get pods -l run=nginx -o=jsonpath='{.items[0]}'
+  549  kubectl get pods -l run=nginx -o=jsonpath='{.items[0].metadata.name}'
+  550  kubectl get pods -l run=nginx -o json
+  551  kubectl get pods -l run=nginx -o json | jq 
+  552  kubectl get pods -l run=nginx -o json | jq [item]
+  553  kubectl get pods -l run=nginx -o json | jq [.item]
+  554  kubectl get pods -l run=nginx -o json | jq [.item.metadata.name]
+  555  kubectl get pods -l run=nginx -o json | jq [.item[0].metadata.name]
+  556  kubectl get pods -l run=nginx -o json | jq [.items[0].metadata.name]
+  557  kubectl get pods -l run=nginx -o json | jq .items[0].metadata.name
+  558  kubectl get pods -l run=nginx -o json | jq .items.metadata.name
+  559  kubectl get pods -l run=nginx -o json | jq .items[0].metadata.name
+  560  kubectl get pods -l run=nginx -o=jsonpath='{items[0].metadata.name}'
+  561  kubectl get pods -l run=nginx -o=jsonpath='{.items[0].metadata.name}'
+  562  kubectl get pods
+  563  kubectl label pods nginx-5d7569fbb7-kz7q9 run=nginx
+  564  kubectl label pods nginx-5d7569fbb7-wp9wb run=nginx
+  565  kubectl label pods nginx-5d7569fbb7-zd5p6 run=nginx
+  566  kubectl get pods -l run=nginx -o=jsonpath='{.items[0].metadata.name}'
+  567  kubectl get pods -l run=nginx -o=jsonpath='{.items.metadata.name}'
+  568  kubectl get pods -l run=nginx -o=jsonpath='{.items[1].metadata.name}'
+  569  kubectl get pods -l run=nginx -o=jsonpath='{.items[2].metadata.name}'
+  570  kubectl get pods -l run=nginx -o json | jq .items[1].metadata.name
+  571  kubectl get pods -l run=nginx -o json | jq .items[2].metadata.name
+  572  kubectl get pods -l run=nginx -o json | jq .items[3].metadata.name
+  573  kubectl get pods -l run=nginx -o json | jq .items[4].metadata.name
+  574  kubectl get pods -l run=nginx -o json | jq .items[0].metadata.name
+  575  kubectl get pods -l run=nginx -o json | jq .items[0].metadata.name .items[0].metadata.labels
+  576  kubectl get pods -l run=nginx -o json | jq -r .items[0].metadata.name .items[0].metadata.labels
+  577  kubectl get pods -l run=nginx -o json | jq .items[0].metadata.labels
+  578  kubectl get pods -l run=nginx -o json | jq .items[0].metadata.labels.app
+  579  kubectl get pods -l run=nginx -o json | jq .[]
+  580  kubectl get pods -l run=nginx -o json | jq .[].metadata
+  581  kubectl get pods -l run=nginx -o json | jq .[].items.metadata
+  582  kubectl get pods -l run=nginx -o json | jq .[].items
+  583  kubectl get pods -l run=nginx -o json | jq .items[0].metadata.name | .items[0].metadata.labels
+  584  kubectl get pods -l run=nginx -o json | jq .[] | .items[0].metadata.labels
+  585  kubectl get pods -l run=nginx -o json | jq .[] | .metadata.labels
+  586  kubectl get pods -l run=nginx -o json | jq .[] | .items.metadata.labels
+  587  kubectl get pods -l run=nginx -o json | jq '.[] | .items.metadata.labels'
+  588  kubectl get pods -l run=nginx -o json | jq '.[] | .items[0].metadata.labels'
+  589  kubectl get pods -l run=nginx -o json | jq '.items[0].metadata.labels'
+  590  kubectl get pods -l run=nginx -o json | jq '.items[0].metadata.labels.run'
+  591  kubectl get pods -l run=nginx -o json | jq .items[0].metadata.name
+  592  kubectl get pods -l run=nginx -o jsonpath="{.items[0].metadata.name}"
+  593  kubectl get pods
+  594  kubectl get pods -o=jsonpath={.items[0].metadata.name}
+  595  kubectl get pods -o=jsonpath={.items.metadata.name}
+  596  kubectl get pods -o=jsonpath={.items[10].metadata.name}
+  597  kubectl get pods | jq .items[0].metadata.name
+  598  kubectl get pods | jq '.items[0].metadata.name'
+  599  kubectl get pods | jq .items[0].metadata.name
+  600  kubectl get pods -l run=nginx -o json | jq .items[0].metadata.name
+  601  kubectl get pods -o json | jq .items[0].metadata.name
+  602  kubectl get pods -o json | jq .items[0,9].metadata.name
+  603  kubectl get pods -o json | jq .items[0:9].metadata.name
+  604  kubectl get pods -o json | jq .items[0,9].metadata.name
+  605  kubectl get pods -o json | jq .items[0,1,2,3,4].metadata.name
+  606  kubectl get pods -o json | jq .items[0-9].metadata.name
+  607  kubectl get pods -o json | jq .items[0:9].metadata.name
+  608  kubectl get pods -o json | jq .items[ range(0;10) ].metadata.name
+  609  kubectl get pods -o json | jq .items[range(0;10)].metadata.name
+  610  kubectl get pods -o json | jq -r .items[range(0;10)].metadata.name
+  611  kubectl get pods -o json | jq -n .items[range(0;10)].metadata.name
+  612  kubectl get pods -o json | jq -s .items[range(0;10)].metadata.name
+  613  kubectl get pods -o json | jq .items[range(0;10)].metadata.name
+  614  jq
+  615  man jq
+  616  kubectl get pods -o json | jq .items[0].metadata.name
+  617  kubectl get pods -o json | jq .items.[0-3].metadata.name
+  618  kubectl get pods -o json | jq .items[0-3].metadata.name
+  619  kubectl get pods -o json | jq .items[0;3].metadata.name
+  620  kubectl get pods -o json | jq .items[0:3].metadata.name
+  621  kubectl get pods -o json | jq -r .[]
+  622  kubectl get pods -o json | jq -r .[] | metadata.name
+  623  kubectl get pods -o json | jq -r .[] | .metadata.name
+  624  kubectl get pods -o json | jq -r ".[] | .metadata.name"
+  625  kubectl get pods -o json | jq -r ".[] | .items.metadata.name"
+  626  kubectl get pods -o json | jq -r ".[] | .items[0:10].metadata.name"
+  627  kubectl get pods -o json | jq -r ".[] | .items[0].metadata.name"
+  628  kubectl get pods -o json | jq -r ".[] | .items.metadata.name"
+  629  kubectl get pods -o json | jq -r ".[]
+"
+  630  kubectl get pods -o json | jq -r ".[].metadata.name"
+  631  kubectl get pods -o json | jq -r ".[] | metatdata"
+  632  kubectl get pods -o json | jq -r ".[] | .metatdata"
+  633  kubectl get pods -o json | jq -r ".[] | .metadata"
+  634  kubectl get pods -o json | jq -r ".[] | .name"
+  635  kubectl get pods -o json | jq ".[] | .metadata"
+  636  kubectl get pods -o json | jq ".[] | .metadata.name"
+  637  kubectl get pods -o json | jq ".[] "
+  638  kubectl get pods -o json | jq ".[].metadata.name"
+  639  kubectl get pods -o jsonpath={..name}
+  640  kubectl get pods -o jsonpath={..metadata.name}
+  641  kubectl get pods -o jsonpath={..metadata.name} | tr -s "[[:space:]]" "\n"
+  642  kubectl get pods -o jsonpath={..metadata.name} | tr -s "[[:space:]]" "\n" | sort
+  643  kubectl get pods -o jsonpath={..metadata.name} | tr -s "[[:space:]]" "\n" | sort | uniq -c
+  644  kubectl get pods -o jsonpath={..metadata.name} | tr -s "[[:space:]]" "\n" | sort
+  645  kubectl get pods -o jsonpath={..Image}
+  646  kubectl get pods -o jsonpath={..image}
+  647  kubectl get pods -o jsonpath={..image} | tr -s "[[:space:]]" "\n"
+  648  kubectl get pods -o jsonpath={items[0].metadata.name}
+  649  kubectl get pods -o jsonpath={.items[0].metadata.name}
+  650  kubectl get pods -o jsonpath={.items[*].metadata.name}
+  651  kubectl get pods -o jsonpath={.items[*].metadata.name}|tr -s "[[:space:]]" "\n"
+  652  kubectl get pods -o=jsonpath={.items[*].spec.containers[*].image}
+  653  kubectl get pods -o=jsonpath={.items[*].spec.containers[*].image} | tr -s "[[:space:]]" "\n"
+  654  kubectl get pods --all-namespaces -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{", "}{end}{end}' |\
+  655  kubectl get pods --all-namespaces -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{", "}{end}{end}'
+  656  kubectl get pods -l run=nginx -o=jsonpath={items[*].metadata.name}
+  657  kubectl get pods -l run=nginx -o=jsonpath={.items[*].metadata.name}
+  658  kubectl get pods -l run=nginx -o=jsonpath={.items[*].metadata.name} | tr -s "[[:space:]]" "\n"
+  659  kubectl get pods -l run=nginx -o=jsonpath={..metadata.name}
+  660  kubectl get pods -l run=nginx -o=jsonpath={..metadata.name} | tr -s "[[:space:]]" \n"
+  661  kubectl get pods -l run=nginx -o=jsonpath={..metadata.name} | tr -s "[[:space:]]" "\n"
+  662  kubectl get pods -l run=nginx -o=jsonpath={..metadata.name} | tr -s "[[:space:]]" "\n\n"
+  663  kubectl get pods -l run=nginx -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{", "}{end}{end}'
+  664  kubectl get pods -l run=nginx -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{end}{end}'
+  665  kubectl get pods -l run=nginx
+  666  kubectl get pods -l run=nginx -o=jsonpath={range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{end}{end}
+  667  kubectl get pods -l run=nginx -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{end}{end}'
+  668  kubectl get pods -l run=nginx --sort-by=.metadata.name
+  669  kubectl get pods -l run=nginx -o=jsonpath={..metadata.name}
+  670  kubectl get pods -l run=nginx -o=jsonpath={..metadata.name} | tr "[[:space:]]" "\n" | sort
+  671  kubectl get pods
+  676  kubectl create secret generic secret-test --from-literal=password=Ym9iCg==
+  677  kubectl get secret secret-test -oyaml
+  678  cd /root/practice/configmap/
+  679  ls
+  680  cat mysql-rc.yaml 
+  681  kubectl get pods -l run=nginx -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{end}{end}'
+  682  kubectl get pods -l run=nginx -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{end}{end}'|sot
+  683  kubectl get pods -l run=nginx -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{end}{end}'|sort
+  684  history ../history.commands
+  685  history > ../history.commands
